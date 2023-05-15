@@ -4,13 +4,13 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-// Rota principal para obter os 5 repositórios mais antigos em C#
+// Rota os 5 repositórios mais antigos em C#
 app.get('/repositorios', async (req, res) => {
   try {
-    // Faz a requisição à API do GitHub
+    //requisição à API do GitHub
     const response = await axios.get('https://api.github.com/orgs/takenet/repos');
 
-    // Filtra os repositórios que são escritos em C#
+    // Filtra os repositórios em C#
     const csharpRepos = response.data.filter(repo => repo.language === 'C#');
 
     // Ordena os repositórios pelo mais antigo
