@@ -16,13 +16,18 @@ app.get('/repositorios', async (req, res) => {
     // Ordena os repositórios pelo mais antigo
     const sortedRepos = csharpRepos.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
 
-    // Retorna 5 repositórios mais antigos
+    // Retorna apenas os 5 repositórios mais antigos
     const oldestRepos = sortedRepos.slice(0, 5);
 
-    // retorna em JSON
+    // Retorna a resposta em formato JSON
     res.json(oldestRepos);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });
   }
+});
+
+// Inicia o servidor
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
