@@ -4,7 +4,6 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-// Rota os 5 repositórios mais antigos em C#
 app.get('/repositorios', async (req, res) => {
   try {
     //requisição à API do GitHub
@@ -25,9 +24,4 @@ app.get('/repositorios', async (req, res) => {
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });
   }
-});
-
-// Inicia o servidor
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
 });
